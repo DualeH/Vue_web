@@ -1,0 +1,151 @@
+/*
+ * 主体部分公共样式
+ *    全局类的样式, 必须以 app- 作为开头
+ */
+
+/* input背景色默认是黄色 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+/* 整体 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 内层轨道 */
+::-webkit-scrollbar-track-piece {
+  -webkit-border-radius: 0;
+  cursor: pointer;
+}
+
+/* 滑块 */
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  -webkit-border-radius: 6px;
+  outline-offset: -2px;
+  background: #cccccc;
+  border: 2px solid #cccccc;
+  cursor: pointer;
+}
+
+/* 滑块悬停 */
+::-webkit-scrollbar-thumb:hover {
+  height: 50px;
+  background: #d7d5d5;
+  border: 2px solid #d7d5d5;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+}
+
+/*滚动条样式--ie*/
+body {
+  scrollbar-face-color: #014179;
+  /*滚动条颜色*/
+  scrollbar-highlight-color: #014179;
+  scrollbar-3dlight-color: #014179;
+  scrollbar-darkshadow-color: #014179;
+  scrollbar-Shadow-color: #014179;
+  /*滑块边色*/
+  scrollbar-arrow-color: #014179;
+  /*箭头颜色*/
+  scrollbar-track-color: #fefefe;
+  /*背景颜色*/
+  background-color: #e1e1e1;
+}
+
+html,
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  min-width: 1250px;
+  font-size: 14px;
+}
+
+/* 页面主体布局 */
+.main {
+  width: 90%;
+  max-width: 1400px;
+  min-width: 960px;
+  margin: 15px auto;
+  min-height: 400px;
+  height: 100%;
+}
+
+.main .sidebar {
+  width: 290px;
+  float: right;
+  height: 100%;
+  background-color: #fff;
+}
+
+.main .content {
+  margin-right: 300px;
+  height: 100%;
+}
+
+/* 主体内容布局 */
+.main .content .panel .header {
+  padding: 10px;
+  background-color: #f6f6f6;
+}
+
+.main .content .panel .inner {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.main .panel .cell {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fff
+}
+
+.main .panel .cell:hover {
+  background: #f5f5f5;
+}
+
+.main .panel .cell .user_avatar img {
+  width: 30px;
+  height: 30px;
+  border: 0;
+}
+
+.main .panel .cell .reply_count {
+  width: 70px;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+}
+.main .panel .cell .topic_title{
+  max-width: 70%;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  line-height: 30px;
+}
+.main .panel .cell .topic_time{
+  line-height: 32px;
+}
+.panel .inner .unstyled li div,
+.topic_title_wrapper,
+.user_name,
+a.dark,
+a.topic_title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

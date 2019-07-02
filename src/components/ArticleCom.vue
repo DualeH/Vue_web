@@ -1,0 +1,112 @@
+<template>
+  <div class="secDiv">
+    <span>发布于：{{createdTime}}</span>
+    <router-link
+      :to="{name: 'UserRoute',params:{id: article.author.loginname}}"
+    >作者：{{article.author.loginname}}</router-link>
+    <span>浏览量：{{article.visit_count}}</span>
+    <span>来自：{{article.tab}}</span>
+    <div v-html="article.content" id="content"></div>
+    <div id="reply">
+      <div v-for="reply in article.replies" :key="reply.id" class="replySec">
+        <img :src="reply.author.avatar_url" />
+        <div>
+          <div>
+            <span>{{reply.author.loginname}}</span>
+            <span>{{reply.create_at}}</span>
+            <span v-if="reply.ups.length > 0">点赞{{reply.ups.length}}</span>
+          </div>
+          <p v-html="reply.content"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      article: {
+        title: '',
+        author: {
+          loginname: '',
+        },
+        visit_count: '',
+        tab: '',
+        content: '',
+        create_at: '2017-04-130000',
+      },
+    }
+  },
+  computed: {
+    createdTime() {
+      return String(this.article.create_at).match(/.{10}/)[0];
+    },
+  },
+  methods: {
+
+  },
+  components: {
+
+  },
+  mounted() {
+    this.$get(`/v1${this.$route.path}`, this.params)
+      .then(res => {
+        this.article = res
+      })
+  }
+}
+</script>
+<style>
+#content img {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
+
+<style scoped>
+.secDiv {
+  width: 60%;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  padding: 2rem;
+}
+
+#content {
+  margin: 1rem auto 2rem auto;
+  padding: 1rem 0 2rem 1rem;
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+
+#reply {
+  display: flex;
+  flex-direction: column;
+}
+
+#reply img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.replySec {
+  display: flex;
+  background: grey;
+  width: 100%;
+  margin: 0.5rem auto;
+  padding: 1rem;
+}
+
+.replySec > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+  justify-content: space-around;
+}
+
+.replySec div {
+}
+</style>

@@ -75,77 +75,16 @@ body {
   font-size: 14px;
 }
 
-/* 页面主体布局 */
-.main {
-  width: 90%;
-  max-width: 1400px;
-  min-width: 960px;
-  margin: 15px auto;
-  min-height: 400px;
-  height: 100%;
-}
-
-.main .sidebar {
-  width: 290px;
-  float: right;
-  height: 100%;
-  background-color: #fff;
-}
-
-.main .content {
-  margin-right: 300px;
-  height: 100%;
-}
-
-/* 主体内容布局 */
-.main .content .panel .header {
-  padding: 10px;
-  background-color: #f6f6f6;
-}
-
-.main .content .panel .inner {
-  padding: 10px;
-  background-color: #fff;
-}
-
-.main .panel .cell {
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
-  background-color: #fff
-}
-
-.main .panel .cell:hover {
-  background: #f5f5f5;
-}
-
-.main .panel .cell .user_avatar img {
-  width: 30px;
-  height: 30px;
-  border: 0;
-}
-
-.main .panel .cell .reply_count {
-  width: 70px;
-  line-height: 32px;
-  display: inline-block;
-  text-align: center;
-}
-.main .panel .cell .topic_title{
-  max-width: 70%;
-  white-space: nowrap;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 16px;
-  line-height: 30px;
-}
-.main .panel .cell .topic_time{
-  line-height: 32px;
-}
-.panel .inner .unstyled li div,
-.topic_title_wrapper,
-.user_name,
-a.dark,
-a.topic_title {
-  text-overflow: ellipsis;
-  overflow: hidden;
+/* markdown css */
+div pre.prettyprint {
+  font-size: 14px;
+  border-radius: 0;
+  padding: 0 15px;
+  border: none;
+  margin: 20px -10px;
+  border-width: 1px 0;
+  background: #f7f7f7;
+  -o-tab-size: 4;
+  -moz-tab-size: 4;
+  tab-size: 4
 }

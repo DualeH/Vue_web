@@ -32,6 +32,9 @@ export default {
 				config.url = url;
 			}
 
+			if (ignoreLoading) {
+				return
+			}
 			return axios.request(config).then((response) => {
 
 				// 根据响应的状态码返回不同消息
@@ -45,7 +48,7 @@ export default {
 				return parseStatusCode(this, data, response.status);
 			}).catch((response) => {
 				// 当请求报错, 自动设置loading状态
-
+				return parseStatusCode(this, {}, response.status);
 			})
 		}
 

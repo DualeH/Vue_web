@@ -7,12 +7,13 @@ import UserCom from '@/components/UserCom'
 
 // import Home from './views/Home.vue'
 import ArticleCom from '@/components/ArticleCom'
+import AboutCom from '@/components/AboutCom'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes: [{
       path: '/',
       name: 'RootPath',
@@ -31,7 +32,16 @@ export default new Router({
     {
       path: '/user/:name',
       name: 'UserRoute',
-      component: UserCom,
+      components: {
+        main: UserCom
+      },
     },
+    {
+      path: '/about',
+      name: 'AboutRoute',
+      components: {
+        main: AboutCom,
+      },
+    }
   ]
 })

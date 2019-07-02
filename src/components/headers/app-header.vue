@@ -6,6 +6,7 @@
           <a href="/" class="brand">
             <img src="@/assets/images/cnodejs_light.svg" alt>
           </a>
+          <router-link to="/about">关于</router-link>
         </div>
       </div>
     </div>

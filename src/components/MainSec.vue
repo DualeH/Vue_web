@@ -1,9 +1,11 @@
 <template>
   <div class="secDiv">
     <div v-for="item of content" :key="item.id">
-      <img :src="item.author.avatar_url" :title="item.author.loginname" />
+      <router-link :to="{name: 'UserRoute', params: {name: item.author.loginname}}">
+        <img :src="item.author.avatar_url" :title="item.author.loginname" />
+      </router-link>
       <div>
-        <router-link :to='{name:"ArticleRoute",params:{id:item.id}}'>{{item.title}}</router-link>
+        <router-link :to="{name: 'ArticleRoute',params:{id:item.id}}">{{item.title}}</router-link>
         <div class="stuff">
           <span>回复：{{item.reply_count}}</span>
           <span>创建于：{{dealTime}}</span>
@@ -23,7 +25,7 @@ export default {
       },
       params: {
         page: 1,
-        limit: 10,
+        limit: 0,
         mdrender: 'false',
       }
     }
@@ -34,16 +36,29 @@ export default {
     },
   },
   methods: {
+    scrollMethod() {
+      const sumH = document.body.scrollHeight;
+      const viewH = document.documentElement.clientHeight;
+      const scrollH = document.body.scrollTop;
+      if (viewH + scrollH === sumH) {
+        this.getData();
+      }
+    },
+    getData () {
+      this.params.limit += 20;
+      this.$get('/v1/topics', {params: this.params})
+      .then(res => {
+        this.content = res
+      })
+    }
 
   },
   components: {
 
   },
   mounted() {
-    this.$get('/v1/topics', this.params)
-      .then(res => {
-        this.content = res
-      })
+    this.getData();
+    window.addEventListener('scroll', this.scrollMethod);
   }
 }
 </script>
@@ -68,7 +83,7 @@ export default {
 .secDiv > div {
   display: flex;
   justify-content: space-start;
-  height: 100px;
+  margin: 0.5rem 0;
 }
 
 .secDiv > div > div {

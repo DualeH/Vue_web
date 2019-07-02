@@ -21,20 +21,14 @@ export default {
     };
   },
   created() {
-    this.$get({
-      url: `/v1${this.$route.path}`,
-      method: 'get',
-    }).then((res) => {
-      const user = res.author.loginname;
-      return this.$get({
-        url: `/v1/user/${user}`,
-        method: 'get',
-      });
-    }).then((res) => {
-      this.userInfo = res.data;
-    }).catch((res) => {
-      console.log('SideSec.vue :', res);
-    });
+    this.$get(`/v1${this.$route.path}`)
+      .then((res) => {
+        const user = res.author.loginname;
+        return this.$get(`/v1/user/${user}`);
+      })
+      .then(res => {
+        this.userInfo = res;
+      })
   },
 };
 </script>

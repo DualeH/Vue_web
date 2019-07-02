@@ -1,4 +1,5 @@
-# vue-web
+# VueCnodejs
+> 一个Vue的**初/中级**练手项目：重构cnodejs.org.
 
 ## Project setup
 ```

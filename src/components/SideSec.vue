@@ -1,11 +1,26 @@
 <template>
-  <div class="secDiv">
-    <div>
-      <img :src="userInfo.avatar_url" />
-      <span>{{userInfo.loginname}}</span>
+  <div class="side">
+    <div class="panel">
+      <div>
+        <img class="avatar_img" :src="userInfo.avatar_url" />
+        <p class="username">{{userInfo.loginname}}</p>
+      </div>
+      <div class="userinfo-inner">
+        <p>
+          积分：
+          <span class="color-active">{{userInfo.score}}</span>
+        </p>
+        <p>
+          Github:
+          <a
+            class="color-active"
+            :href="'http://github.com/'+ userInfo.githubUsername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{{ userInfo.githubUsername }}</a>
+        </p>
+      </div>
     </div>
-    <p>分数：{{userInfo.score}}</p>
-    <p>Github: https://github.com/{{userInfo.githubUsername}}</p>
   </div>
 </template>
 
@@ -34,17 +49,26 @@ export default {
 </script>
 
 <style scoped>
-.secDiv {
-  width: 20%;
-  height: 30rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  word-break: break-all;
+.panel {
+  margin-top: 0;
   font-size: 21px;
 }
-
-img {
+.username {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.avatar_img {
+  display: block;
   width: 6rem;
   height: 6rem;
+  border-radius: 6rem;
+  margin: 20px auto 5px;
+}
+.userinfo-inner {
+  padding: 0 10px;
+}
+.userinfo-inner p {
+  margin: 5px 0;
+  font-size: 16px;
 }
 </style>

@@ -63,7 +63,7 @@ body {
   /*箭头颜色*/
   scrollbar-track-color: #fefefe;
   /*背景颜色*/
-  background-color: #e1e1e1;
+  background-color: #fff;
 }
 
 html,
@@ -75,16 +75,84 @@ body {
   font-size: 14px;
 }
 
-/* markdown css */
-div pre.prettyprint {
+/* layout */
+.main-section {
+  margin: auto;
+  margin-top: 40px;
+  width: 1200px;
+  position: relative;
+}
+
+.main-section .main {
+  width: 72%;
+}
+
+.main-section .side {
+  width: 25%;
+}
+
+/* panel */
+.panel {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 20px;
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+}
+
+.panel .panel-title {
+  font-size: 20px;
+  color: #000;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 12px;
+}
+
+.panel .avatar_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: 0;
+}
+
+.panel .flex-cell {
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.panel .divider {
+  margin: 10px 0;
+}
+
+/* divider */
+.divider {
+  display: block;
+  height: 1px;
+  width: 100%;
   font-size: 14px;
-  border-radius: 0;
-  padding: 0 15px;
-  border: none;
-  margin: 20px -10px;
-  border-width: 1px 0;
-  background: #f7f7f7;
-  -o-tab-size: 4;
-  -moz-tab-size: 4;
-  tab-size: 4
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, .65);
+  list-style: none;
+  background: #e8e8e8;
+
+}
+
+/* common title */
+.over_title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* color */
+.color-active {
+  color: #42b983;
 }

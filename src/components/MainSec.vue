@@ -1,15 +1,26 @@
 <template>
-  <div class="secDiv">
-    <div v-for="item of content" :key="item.id">
-      <router-link :to="{name: 'UserRoute', params: {name: item.author.loginname}}">
-        <img :src="item.author.avatar_url" :title="item.author.loginname" />
-      </router-link>
-      <div>
-        <router-link :to="{name: 'ArticleRoute',params:{id:item.id}}">{{item.title}}</router-link>
-        <div class="stuff">
-          <span>回复：{{item.reply_count}}</span>
-          <span>创建于：{{dealTime}}</span>
-        </div>
+  <div class="main">
+    <div class="panel">
+      <div class="flex-cell topic_cell" v-for="item of content" :key="item.id">
+        <router-link :to="{name: 'UserRoute', params: {name: item.author.loginname}}">
+          <img class="avatar_img" :src="item.author.avatar_url" :title="item.author.loginname" />
+        </router-link>
+        <router-link
+          class="cell_topic_title over_title"
+          :to="{name: 'ArticleRoute',params:{id:item.id}}"
+        >{{item.title}}</router-link>
+        <span class="cell_reply">
+          <router-link
+            class=""
+            :to="{name: 'ArticleRoute',params:{id:item.id}}"
+          >回复：{{item.reply_count}}</router-link>
+        </span>
+        <span class="">
+          <router-link
+            class=""
+            :to="{name: 'ArticleRoute',params:{id:item.id}}"
+          >创建于：{{dealTime}}</router-link>
+        </span>
       </div>
     </div>
   </div>
@@ -44,12 +55,12 @@ export default {
         this.getData();
       }
     },
-    getData () {
+    getData() {
       this.params.limit += 20;
-      this.$get('/v1/topics', {params: this.params})
-      .then(res => {
-        this.content = res
-      })
+      this.$get('/v1/topics', { params: this.params })
+        .then(res => {
+          this.content = res
+        })
     }
 
   },
@@ -64,40 +75,19 @@ export default {
 </script>
 
 <style scoped>
-.secDiv {
-  width: 60%;
-  background: #fff;
-  border: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  font-size: 22px;
-  padding: 2rem;
+.topic_cell{
+  margin: 10px 0;
 }
-
-.secDiv > div img {
-  width: 4rem;
-  height: 4rem;
-  margin-right: 2rem;
+.cell_topic_title {
+  width: 65%;
+  margin-left: 20px;
+  padding: 0 10px;
+  color: #42b983;
 }
-
-.secDiv > div {
-  display: flex;
-  justify-content: space-start;
-  margin: 0.5rem 0;
+.cell_reply{
+  width: 110px;
 }
-
-.secDiv > div > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.stuff {
-  margin-top: 1rem;
-}
-
-.stuff span:first-child {
-  margin-right: 2rem;
+.cell_create_at{
+  width: 120px;
 }
 </style>
